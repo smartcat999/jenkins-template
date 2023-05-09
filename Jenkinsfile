@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    base {
+    node {
       label 'baseubuntu'
     }
   }
