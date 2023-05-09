@@ -15,7 +15,10 @@ pipeline {
       steps {
         container('baseubuntu') {
           sh 'echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin'
-          sh 'cd base-image && make -f Makefile build-alpine-edge'
+          sh 'cd base-image'
+          retry(3) {
+            sh 'make -f Makefile build-alpine-edge'
+          }
         }
       }
      }
