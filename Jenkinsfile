@@ -11,7 +11,7 @@ pipeline {
   }
 
   stages {
-    stage('baseubuntu hello') {
+    stage('build alpine base-image') {
       steps {
         container('baseubuntu') {
           sh 'docker buildx use my-builder-proxy'
