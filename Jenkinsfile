@@ -1,14 +1,14 @@
 pipeline {
      agent {
-        go {
-          label 'golang'
+        base {
+          label 'base'
         }
      }
 
     stages {
         stage('Build') {
             steps {
-                container('golang') {
+                container('base') {
                     echo 'Building..'
                     sh 'cd base-image && make -f Makefile build-alpine-edge'
                 }
