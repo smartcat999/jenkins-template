@@ -1,14 +1,14 @@
 pipeline {
   agent {
-    node {
-      label 'nodejs'
+    baseubuntu {
+      label 'baseubuntu'
     }
   }
 
   stages {
-    stage('nodejs hello') {
+    stage('baseubuntu hello') {
       steps {
-        container('nodejs') {
+        container('baseubuntu') {
           sh 'cd base-image && make -f Makefile build-alpine-edge'
         }
       }
