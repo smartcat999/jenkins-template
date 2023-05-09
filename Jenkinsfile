@@ -1,11 +1,17 @@
 pipeline {
-    agent any
+     agent {
+        node {
+          label 'go'
+        }
+     }
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh 'cd base-image && make -f Makefile build-alpine-edge'
+                container('go') {
+                    echo 'Building..'
+                    sh 'cd base-image && make -f Makefile build-alpine-edge'
+                }
             }
         }
         stage('Test') {
