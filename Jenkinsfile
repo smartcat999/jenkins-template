@@ -15,7 +15,7 @@ pipeline {
       steps {
         container('baseubuntu') {
           sh 'docker buildx use my-builder-proxy'
-          sh 'docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}'
+          sh 'echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin'
           sh 'cd base-image && make -f Makefile build-alpine-edge'
         }
       }
