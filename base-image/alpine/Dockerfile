@@ -1,7 +1,7 @@
 FROM alpine:edge as base
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    ed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+    sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
 
 RUN apk add shadow && \
     usermod -s /sbin/nologin -g nogroup sync && \
